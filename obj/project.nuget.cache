@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "G+IX1KLzKRwcShp4IC6ZhGmMe+Z5bsHdDUolDzUCDq+hC0SgH+GxaKSV1uHMF8Q2WU3HH95JmP2NRhniWWlq2Q==",
+  "success": true,
+  "projectFilePath": "/home/akhlaq/project/test/dotnet-test/TodoApi.csproj",
+  "expectedPackageFiles": [
+    "/home/akhlaq/.nuget/packages/microsoft.netcore.app.ref/7.0.10/microsoft.netcore.app.ref.7.0.10.nupkg.sha512",
+    "/home/akhlaq/.nuget/packages/microsoft.aspnetcore.app.ref/7.0.10/microsoft.aspnetcore.app.ref.7.0.10.nupkg.sha512",
+    "/home/akhlaq/.nuget/packages/microsoft.netcore.app.host.linux-x64/7.0.10/microsoft.netcore.app.host.linux-x64.7.0.10.nupkg.sha512"
+  ],
+  "logs": []
+}

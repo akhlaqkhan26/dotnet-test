@@ -1,0 +1,78 @@
+{
+  "format": 1,
+  "restore": {
+    "/home/akhlaq/project/test/dotnet-test/TodoApi.csproj": {}
+  },
+  "projects": {
+    "/home/akhlaq/project/test/dotnet-test/TodoApi.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/akhlaq/project/test/dotnet-test/TodoApi.csproj",
+        "projectName": "TodoApi",
+        "projectPath": "/home/akhlaq/project/test/dotnet-test/TodoApi.csproj",
+        "packagesPath": "/home/akhlaq/.nuget/packages/",
+        "outputPath": "/home/akhlaq/project/test/dotnet-test/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/akhlaq/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[7.0.10, 7.0.10]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.linux-x64",
+              "version": "[7.0.10, 7.0.10]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[7.0.10, 7.0.10]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/7.0.400/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
