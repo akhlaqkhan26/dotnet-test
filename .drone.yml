@@ -6,7 +6,7 @@ steps:
 - name: build
   image: docker:20
   commands:
-  - docker build -t dotnet-test .
+  - docker build -t dotnet-test -f ./Dockerfile .
 
 trigger:
   event:
@@ -14,3 +14,4 @@ trigger:
     - push
   branch:
   - main
+
