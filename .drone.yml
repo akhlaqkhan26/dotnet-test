@@ -1,5 +1,5 @@
 kind: pipeline
-type: docker
+type: exec
 name: default
 
 platform:
