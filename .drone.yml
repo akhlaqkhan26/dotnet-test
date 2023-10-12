@@ -9,5 +9,5 @@ platform:
 steps:
 - name: build-docker
   commands:
-  - docker build -t localhost:5000/dotnet-test:1.0.0 .
-  - docker push localhost:5000/dotnet-test:1.0.0
+  - docker build -t localhost:5000/dotnet-test:1.0.1 .
+  - docker push localhost:5000/dotnet-test:1.0.1
