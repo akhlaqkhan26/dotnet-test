@@ -8,4 +8,5 @@ steps:
     PAT:
       from_secret: PAT
   commands:
+  - echo $PAT
   - docker build -t portal-vendor-procurement .
