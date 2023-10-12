@@ -17,6 +17,7 @@ steps:
   image: mcr.microsoft.com/dotnet/sdk:7.0
   commands:
   - dotnet test --no-restore --verbosity normal
+  
 trigger:
   event:
     include:

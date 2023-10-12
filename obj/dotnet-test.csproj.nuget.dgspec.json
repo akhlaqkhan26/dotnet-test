@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "/home/akhlaq/project/test/dotnet-test/TodoApi.csproj": {}
+    "/home/akhlaq/project/test/dotnet-test/dotnet-test.csproj": {}
   },
   "projects": {
-    "/home/akhlaq/project/test/dotnet-test/TodoApi.csproj": {
+    "/home/akhlaq/project/test/dotnet-test/dotnet-test.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/akhlaq/project/test/dotnet-test/TodoApi.csproj",
-        "projectName": "TodoApi",
-        "projectPath": "/home/akhlaq/project/test/dotnet-test/TodoApi.csproj",
+        "projectUniqueName": "/home/akhlaq/project/test/dotnet-test/dotnet-test.csproj",
+        "projectName": "dotnet-test",
+        "projectPath": "/home/akhlaq/project/test/dotnet-test/dotnet-test.csproj",
         "packagesPath": "/home/akhlaq/.nuget/packages/",
         "outputPath": "/home/akhlaq/project/test/dotnet-test/obj/",
         "projectStyle": "PackageReference",
