@@ -8,4 +8,4 @@ steps:
     PAT:
       from_secret: PAT
   commands:
-  - docker build --build-arg pat=$API_KEY --build-arg package_version=1.0.0 --no-cache -t portal-vendor-procurement .
+  - docker build -t portal-vendor-procurement .
