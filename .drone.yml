@@ -3,13 +3,10 @@ type: exec
 name: default
 
 steps:
-- name: build
-  environment:
-    PAT:
-      from_secret: PAT
-  commands:
-  - docker build -t dotnet-clean:1.0.0 .
-  
-trigger:
-  event:
-  - tag
+  - name: build
+    commands:
+    - docker build -t dotnet-clean:1.0.0 .
+    when:
+      branch: main
+      event:
+        - push
