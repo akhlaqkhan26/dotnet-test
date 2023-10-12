@@ -8,5 +8,11 @@ steps:
     PAT:
       from_secret: PAT
   commands:
-  - echo $PAT
-  - echo "ddddd"
+  - docker build -t dotnet-clean:1.0.0 .
+  
+trigger:
+  event:
+    include:
+    - push
+  branch:
+  - main
