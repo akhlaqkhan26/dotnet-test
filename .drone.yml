@@ -7,6 +7,6 @@ platform:
   arch: amd64
   
 steps:
-- name: greeting
+- name: build-docker
   commands:
-  - echo hello world
+  - docker build -t dotnet-test:1.0.0 .
