@@ -4,9 +4,31 @@ name: default
 
 steps:
 - name: build
-  image: docker:20
+  image: docker:dind
+  volumes:
+    - name: dockersock
+      path: /var/run
   environment:
-    DOCKER_CLI_AGGREGATE_OUTPUT: 1
+    DOCKER_PASSWORD:
+      from_secret: docker_password
   commands:
-    - docker build -t dotnet-test -f Dockerfile .
+    - DOCKER_BUILDKIT=1 docker build -t dotnet-test -f Dockerfile .
 
+services:
+  - name: docker
+    image: docker:dind
+    privileged: true
+    volumes:
+      - name: dockersock
+        path: /var/run
+
+volumes:
+  - name: dockersock
+    temp: {}
+    
+trigger:
+  event:
+    include:
+    - push
+  branch:
+  - main
