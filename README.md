@@ -44,3 +44,6 @@ docker run --detach \
 DRONE_RPC_PROTO=https
 DRONE_RPC_HOST=fd2a-111-68-25-162.ngrok-free.app
 DRONE_RPC_SECRET=814d768a8dbd8f1cb1f3a32cab49aed4
+
+
+faffafafa
