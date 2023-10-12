@@ -13,4 +13,4 @@ steps:
   - docker build dotnet-test .
   when:
     event: 
-      - push
+      - tag
