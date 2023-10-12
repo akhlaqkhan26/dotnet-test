@@ -1,34 +1,12 @@
 kind: pipeline
-type: docker
+type: exec
 name: default
 
 steps:
 - name: build
-  image: docker:dind
-  volumes:
-    - name: dockersock
-      path: /var/run
   environment:
-    DOCKER_PASSWORD:
-      from_secret: docker_password
+    PAT:
+      from_secret: PAT
   commands:
-    - DOCKER_BUILDKIT=1 docker build -t dotnet-test -f Dockerfile .
-
-services:
-  - name: docker
-    image: docker:dind
-    privileged: true
-    volumes:
-      - name: dockersock
-        path: /var/run
-
-volumes:
-  - name: dockersock
-    temp: {}
-    
-trigger:
-  event:
-    include:
-    - push
-  branch:
-  - main
+  - echo $PAT
+  - echo "ddddd"
