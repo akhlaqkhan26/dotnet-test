@@ -1,27 +1,11 @@
 kind: pipeline
-type: docker
+type: exec
 name: default
 
 steps:
-- name: restore
-  image: mcr.microsoft.com/dotnet/sdk:7.0
-  commands:
-  - dotnet restore
-
 - name: build
-  image: mcr.microsoft.com/dotnet/sdk:7.0
+  environment:
+    PAT:
+      from_secret: PAT
   commands:
-  - dotnet build --configuration Release
-
-- name: test
-  image: mcr.microsoft.com/dotnet/sdk:7.0
-  commands:
-  - dotnet test --no-restore --verbosity normal
-  
-trigger:
-  event:
-    include:
-    - push
-  branch:
-  - main
-
+  - docker build --build-arg pat=$API_KEY --build-arg package_version=1.0.0 --no-cache -t portal-vendor-procurement .
