@@ -11,8 +11,5 @@ steps:
   - docker build -t dotnet-clean:1.0.0 .
   
 trigger:
-  event:
-    include:
-    - push
   branch:
   - main
