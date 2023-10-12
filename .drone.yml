@@ -3,10 +3,6 @@ type: exec
 name: default
 
 steps:
-  - name: build
-    commands:
-    - docker build -t dotnet-clean:1.0.0 .
-    when:
-      branch: main
-      event:
-        - push
+- name: greeting
+  commands:
+  - echo hello world
