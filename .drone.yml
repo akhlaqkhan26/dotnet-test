@@ -11,6 +11,10 @@ steps:
   commands:
   - echo $PAT
   - docker build dotnet-test .
-  when:
-    event: 
-      - tag
+
+trigger:
+  event:
+    include:
+    - push
+  branch:
+  - main
