@@ -4,9 +4,6 @@ name: default
 steps:
 - name: build
   image: docker:20
-  environment:
-    PAT:
-      from_secret: PAT
   commands:
   - echo $PAT
   - docker build dotnet-test .
@@ -16,4 +13,5 @@ trigger:
   - main
   event:
   - push
+
   
