@@ -1,1 +1,1 @@
-[![Build Status](https://fd2a-111-68-25-162.ngrok-free.app/api/badges/akhlaqkhan26/dotnet-test/status.svg)](https://fd2a-111-68-25-162.ngrok-free.app/akhlaqkhan26/dotnet-test)gi
+[![Build Status](https://b306-111-68-25-162.ngrok-free.app/api/badges/akhlaqkhan26/dotnet-test/status.svg)](https://b306-111-68-25-162.ngrok-free.app/akhlaqkhan26/dotnet-test)
