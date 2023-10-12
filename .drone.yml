@@ -1,11 +1,12 @@
 kind: pipeline
-type: exec
+type: docker
 name: default
 
 steps:
 - name: build
+  image: docker:20
   environment:
-    PAT:
-      from_secret: PAT
+    DOCKER_CLI_AGGREGATE_OUTPUT: 1
   commands:
-  - echo $PAT
+    - docker build -t dotnet-test -f Dockerfile .
+
