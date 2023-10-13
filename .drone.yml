@@ -9,5 +9,5 @@ platform:
 steps:
 - name: build-docker
   commands:
-  - docker build -t local-registry:5000/dotnet-test:1.0.5 .
-  - docker push local-registry:5000/dotnet-test:1.0.5
+  - docker build -t registry:5000/dotnet-test:1.0.5 .
+  - docker push registry:5000/dotnet-test:1.0.5
