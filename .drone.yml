@@ -13,5 +13,5 @@ steps:
       from_secret: docker_pass
   commands:
   - echo $PASSWORD | docker login registry:5000 --username refactory --password-stdin
-  - docker build -t registry:5000/dotnet-test:7.0.0 .
-  - docker push registry:5000/dotnet-test:7.0.0
+  - docker build -t registry:5000/dotnet-test .
+  - docker push registry:5000/dotnet-test
