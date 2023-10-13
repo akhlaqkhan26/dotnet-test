@@ -1,5 +1,5 @@
 kind: pipeline
-type: docker
+type: exec
 name: default
 
 platform:
@@ -8,7 +8,6 @@ platform:
 
 steps:
 - name: build-docker
-  image: docker:20
   commands:
-  - docker build -t localhost:5000/dotnet-test:1.0.5 .
-  - docker push localhost:5000/dotnet-test:1.0.5
+  - docker build -t registry/dotnet-test:1.0.5 .
+  - docker push registry/dotnet-test:1.0.5
