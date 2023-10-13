@@ -53,9 +53,11 @@ docker run -d --network devops --restart always --name registry registry:2.7
 
 docker run -d \
 --name watchtower \
---network devops -v /var/run/docker.sock:/var/run/docker.sock containrrr/watchtower:1.6.0 --interval 30 --monitor-only dotnet-test --debug
+-e WATCHTOWER_NO_PULL=true \
+-e WATCHTOWER_LABEL_TAKE_PRECEDENCE=true \
+--network devops -v /var/run/docker.sock:/var/run/docker.sock containrrr/watchtower:1.6.0 --interval 10 dotnet-test --debug
 
 
 6. Run dotnet-test as container
 
-docker run -d --name dotnet-test dotnet-test:1.0.7
+docker run -d --label com.centurylinklabs.watchtower.no-pull=true --name dotnet-test dotnet-test:1.0.9      
