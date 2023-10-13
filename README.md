@@ -44,10 +44,10 @@ DRONE_RPC_HOST=localhost:9000
 DRONE_RPC_SECRET=b014154316bfe1de52559ad3dd306386
 DRONE_LOG_FILE=/var/log/drone-runner-exec/log.txt
 
-
+    
 5. Setup Docker Registry
 
-docker run -d --network devops --restart always --name registry registry:2.7
+docker run -d -p 5000:5000 --network devops --restart always --name registry registry:2.7
 
 6. Setup Wacthtower
 
@@ -60,4 +60,7 @@ docker run -d \
 
 6. Run dotnet-test as container
 
-docker run -d --label com.centurylinklabs.watchtower.no-pull=true --name dotnet-test dotnet-test:1.0.9      
+docker run -d --label com.centurylinklabs.watchtower.no-pull=true --name dotnet-test dotnet-test:1.0.9 
+
+
+docker run -d --name dotnet-test dotnet-test:1.0.9

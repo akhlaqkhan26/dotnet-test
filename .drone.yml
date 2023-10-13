@@ -6,8 +6,8 @@ platform:
   os: linux
   arch: amd64
   
-  
 steps:
 - name: build-docker
   commands:
-  - docker build -t dotnet-test:2.0.0 .
+  - docker build -t localhost:5000/dotnet-test:2.0.0 .
+  - docker push localhost:5000/dotnet-test:2.0.0
