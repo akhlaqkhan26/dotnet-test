@@ -58,4 +58,4 @@ docker run -d \
 
 6. Run dotnet-test as container
 
-docker run -d --name dotnet-test --label=om.centurylinklabs.watchtower.no-pull=true dotnet-test:1
+docker run -d --name dotnet-test --label=om.centurylinklabs.watchtower.no-pull=true --label=com.centurylinklabs.watchtower.local-image=true dotnet-test:1.0.7
