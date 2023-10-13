@@ -1,5 +1,5 @@
 kind: pipeline
-type: exec
+type: docker
 name: default
 
 platform:
@@ -8,6 +8,7 @@ platform:
 
 steps:
 - name: build-docker
+  image: docker:din
   commands:
   - docker build -t registry/dotnet-test:1.0.5 .
   - docker push registry/dotnet-test:1.0.5
