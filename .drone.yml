@@ -24,6 +24,7 @@ services:
   volumes:
   - name: dockersock
     path: /var/run
+  command: [ '-H', 'unix:///drone/docker.sock' ]
 
 volumes:
 - name: dockersock
