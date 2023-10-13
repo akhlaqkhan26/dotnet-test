@@ -8,7 +8,7 @@ platform:
 
 steps:
 - name: build-docker
-  image: docker:din
+  image: docker:dind
   commands:
   - docker build -t registry/dotnet-test:1.0.5 .
   - docker push registry/dotnet-test:1.0.5
