@@ -3,7 +3,7 @@ type: exec
 name: default
 
 platform:
-  os: linux
+  os: windows
   arch: amd64
   
 steps:
