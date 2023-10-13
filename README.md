@@ -1,53 +1,65 @@
+host =  https://fddf-111-68-25-162.ngrok-free.app
 
+1. Create Network
 
-docker run \      
+docker network create devops
+
+2. Setup Drone
+```
+docker run \     
+    --network devops 
     --volume=drone-server-data:/data \
-    --env=DRONE_GITHUB_CLIENT_ID=fe03a856a435eab802cb \
-    --env=DRONE_GITHUB_CLIENT_SECRET=93dc10a71dd572b437910693ae2b5c04949c39a8 \
+    --env=DRONE_GITHUB_CLIENT_ID=d29daf825fbf3a016c99 \
+    --env=DRONE_GITHUB_CLIENT_SECRET=3009aefb53162ec72a2d65a4670b627e19269083 \
     --env=DRONE_RPC_SECRET=b014154316bfe1de52559ad3dd306386 \
-    --env=DRONE_SERVER_HOST=b306-111-68-25-162.ngrok-free.app  \
+    --env=DRONE_SERVER_HOST=fddf-111-68-25-162.ngrok-free.app  \
     --env=DRONE_SERVER_PROTO=https \
-    --env=DRONE_REGISTRY_PLUGIN_ENDPOINT=http://localhost:5000 \
     --env=DRONE_USER_CREATE=username:akhlaqkhan26,admin:true \
-    --env=DRONE_REGISTRY_PLUGIN_SKIP_VERIFY=true \
     --publish=9000:80 \
     --publish=9443:443 \
     --restart=always \
     --detach=true \
     --name=drone \
     drone/drone:2
+```
 
+3. Setup Runner
 docker run --detach \
-    --volume=/var/run/docker.sock:/var/run/docker.sock \
-    --env=DRONE_RPC_PROTO=https \
-    --env=DRONE_RPC_HOST=b306-111-68-25-162.ngrok-free.app  \
-    --env=DRONE_RPC_SECRET=b014154316bfe1de52559ad3dd306386 \
-    --env=DRONE_RUNNER_CAPACITY=2 \
-    --env=DRONE_RUNNER_NAME=my-first-runner \
-    --publish=3000:3000 \
-    --restart=always \
-    --name=runner \
-    drone/drone-runner-docker:1
+  --network devops \
+  --volume=/var/run/docker.sock:/var/run/docker.sock \
+  --env=DRONE_RPC_PROTO=https \
+  --env=DRONE_RPC_HOST=fddf-111-68-25-162.ngrok-free.app \
+  --env=DRONE_RPC_SECRET=b014154316bfe1de52559ad3dd306386 \
+  --env=DRONE_RUNNER_CAPACITY=2 \
+  --env=DRONE_RUNNER_NAME=runner \
+  --publish=3000:3000 \
+  --restart=always \
+  --name=runner \
+  drone/drone-runner-docker:1
 
-
-docker run --detach \
-    --env=DRONE_RPC_PROTO=https \
-    --env=DRONE_RPC_HOST=b306-111-68-25-162.ngrok-free.app  \
-    --env=DRONE_RPC_SECRET=b014154316bfe1de52559ad3dd306386 \
-    --publish=3000:3000 \
-    --restart always \
-    --name runner \
-    drone/drone-runner-ssh
-
-
+Config Runner if using exec runner:
 
 DRONE_RPC_PROTO=https
-DRONE_RPC_HOST=fd2a-111-68-25-162.ngrok-free.app
-DRONE_RPC_SECRET=814d768a8dbd8f1cb1f3a32cab49aed4
+DRONE_RPC_HOST=fddf-111-68-25-162.ngrok-free.app
+DRONE_RPC_SECRET=b014154316bfe1de52559ad3dd306386
+DRONE_LOG_FILE=/var/log/drone-runner-exec/log.txt
+DRONE_RUNNER_LABELS=exec:test
 
 
+5. Setup Docker Registry
+
+docker run -d --network devops --restart always --name registry registry:2.7
+
+6. Setup Wacthtower
+
+docker run -d \
+--name watchtower \
+--network devops
+-v /var/run/docker.sock:/var/run/docker.sock \
+dotnet-test
+containrrr/watchtower --debug
 
 
-rty
+6. Run dotnet-test as container
 
-
+docker run -d --name dotnet-test registry/dotnet-test:5
