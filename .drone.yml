@@ -8,7 +8,7 @@ platform:
   
 steps:
 - name: build-docker
-  image: drone/docker:latest
+  image: docker:dind
   commands:
   - docker build -t localhost:5000/dotnet-test:3.0.0 .
   - docker push localhost:5000/dotnet-test:3.0.0
