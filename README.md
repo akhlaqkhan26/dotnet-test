@@ -43,7 +43,6 @@ DRONE_RPC_PROTO=https
 DRONE_RPC_HOST=fddf-111-68-25-162.ngrok-free.app
 DRONE_RPC_SECRET=b014154316bfe1de52559ad3dd306386
 DRONE_LOG_FILE=/var/log/drone-runner-exec/log.txt
-DRONE_RUNNER_LABELS=exec:test
 
 
 5. Setup Docker Registry
