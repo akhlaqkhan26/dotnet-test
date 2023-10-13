@@ -47,6 +47,16 @@ DRONE_LOG_FILE=/var/log/drone-runner-exec/log.txt
     
 5. Setup Docker Registry
 
+- On Linux:
+mkdir auth
+docker run \
+  --entrypoint htpasswd \
+  httpd:2 -Bbn testuser testpassword > auth/htpasswd
+
+- On Windows
+docker run --rm --entrypoint htpasswd httpd:2 -Bbn testuser testpassword | Set-Content -Encoding ASCII auth/htpasswd
+
+
 docker run -d -p 5000:5000 \
 -v $HOME/watchtower/auth:/auth \
 -e "REGISTRY_AUTH=htpasswd" \
@@ -56,6 +66,19 @@ docker run -d -p 5000:5000 \
 
 6. Setup Wacthtower
 
+- create credentials config json
+    docker login registry:5000
+- Your password will be stored unencrypted in $HOME/.docker/config.json.
+- Or Create manually config.json with formart:
+{
+    "auths": {
+            "registry:5000": {
+                "auth": "s3cr3t"
+            }
+        }
+}
+
+- run watchtower
 docker run -d \
 --name watchtower \
 --add-host=registry:host-gateway \
@@ -63,9 +86,8 @@ docker run -d \
 -v /var/run/docker.sock:/var/run/docker.sock containrrr/watchtower:1.6.0 --interval 10 dotnet-test --debug
 
 
-6. Run dotnet-test as container
+6. Run service as container
 
-docker run -d --name dotnet-test --add-host=registry:host-gateway registry:5000/dotnet-test:4.0.0
+ docker run -d --name dotnet-test -p 8080:80 registry:5000/dotnet-test:latest
 
-
-docker run -d --name dotnet-test localhost:5000/dotnet-test:2.0.0
+7. create changes and push repository
