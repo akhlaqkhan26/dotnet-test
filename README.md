@@ -58,4 +58,4 @@ docker run -d \
 
 6. Run dotnet-test as container
 
-docker run -d --name dotnet-test --label=com.centurylinklabs.watchtower.enable=true registry/dotnet-test:5
+docker run -d --name dotnet-test --label=om.centurylinklabs.watchtower.no-pull=true dotnet-test:1
