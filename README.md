@@ -47,7 +47,7 @@ DRONE_LOG_FILE=/var/log/drone-runner-exec/log.txt
     
 5. Setup Docker Registry
 
-docker run -d -p 5000:5000 --network devops --restart always --name registry registry:2.7
+docker run -d -p 5000:5000 --restart always --name registry registry:2.7
 
 6. Setup Wacthtower
 
@@ -55,7 +55,7 @@ docker run -d \
 --name watchtower \
 -e WATCHTOWER_NO_PULL=true \
 -e WATCHTOWER_LABEL_TAKE_PRECEDENCE=true \
---network devops -v /var/run/docker.sock:/var/run/docker.sock containrrr/watchtower:1.6.0 --interval 10 dotnet-test --debug
+-v /var/run/docker.sock:/var/run/docker.sock containrrr/watchtower:1.6.0 --interval 10 dotnet-test --debug
 
 
 6. Run dotnet-test as container
