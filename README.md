@@ -53,7 +53,7 @@ docker run -d --network devops --restart always --name registry registry:2.7
 
 docker run -d \
 --name watchtower \
---network devops -v /var/run/docker.sock:/var/run/docker.sock containrrr/watchtower --interval 30 dotnet-test --debug
+--network devops -v /var/run/docker.sock:/var/run/docker.sock containrrr/watchtower --interval 30 --label-take-precedence=true dotnet-test --debug
 
 
 6. Run dotnet-test as container
