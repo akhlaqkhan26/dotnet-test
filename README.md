@@ -63,4 +63,4 @@ docker run -d \
 docker run -d --label com.centurylinklabs.watchtower.no-pull=true --name dotnet-test dotnet-test:1.0.9 
 
 
-docker run -d --name dotnet-test dotnet-test:1.0.9
+docker run -d --name dotnet-test localhost:5000/dotnet-test:2.0.0
