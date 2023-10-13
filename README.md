@@ -39,8 +39,8 @@ docker run --detach \
 
 Config Runner if using exec runner:
 
-DRONE_RPC_PROTO=https
-DRONE_RPC_HOST=fddf-111-68-25-162.ngrok-free.app
+DRONE_RPC_PROTO=http
+DRONE_RPC_HOST=localhost:9000
 DRONE_RPC_SECRET=b014154316bfe1de52559ad3dd306386
 DRONE_LOG_FILE=/var/log/drone-runner-exec/log.txt
 
@@ -53,12 +53,9 @@ docker run -d --network devops --restart always --name registry registry:2.7
 
 docker run -d \
 --name watchtower \
---network devops
--v /var/run/docker.sock:/var/run/docker.sock \
-dotnet-test
-containrrr/watchtower --debug
+--network devops -v /var/run/docker.sock:/var/run/docker.sock containrrr/watchtower --interval 30 dotnet-test --debug
 
 
 6. Run dotnet-test as container
 
-docker run -d --name dotnet-test registry/dotnet-test:5
+docker run -d --name dotnet-test --label=com.centurylinklabs.watchtower.enable=true registry/dotnet-test:5
