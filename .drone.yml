@@ -1,18 +1,13 @@
 kind: pipeline
-type: docker
+type: exec
 name: default
 
 platform:
-    os: linux
-    arch: amd64
-
-volumes:
-  - name: dockersock
-    path: /var/run
-
+  os: linux
+  arch: amd64
+  
+  
 steps:
-  - name: build-docker
-    image: docker:dind
-    commands:
-    - docker build -t registry/dotnet-test:1.0.5 .
-    - docker push registry/dotnet-test:1.0.5
+- name: build-docker
+  commands:
+  - docker build -t dotnet-test:1.0.5 .
