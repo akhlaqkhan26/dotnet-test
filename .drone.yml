@@ -11,3 +11,4 @@ steps:
   image: docker:dind
   commands:
   - echo hello-word
+  - docker ps
