@@ -8,6 +8,6 @@ platform:
   
 steps:
 - name: build-docker
-  image: alpine
+  image: docker:dind
   commands:
   - echo hello-word
