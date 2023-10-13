@@ -47,13 +47,19 @@ DRONE_LOG_FILE=/var/log/drone-runner-exec/log.txt
     
 5. Setup Docker Registry
 
-docker run -d -p 5000:5000 --restart always --name registry registry:2.7
+docker run -d -p 5000:5000 \
+-v $HOME/watchtower/auth:/auth \
+-e "REGISTRY_AUTH=htpasswd" \
+-e "REGISTRY_AUTH_HTPASSWD_REALM=Registry Realm" \
+-e REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd \
+--restart always --name registry registry:2.7
 
 6. Setup Wacthtower
 
 docker run -d \
 --name watchtower \
 --add-host=registry:host-gateway \
+-v $HOME/watchtower/config.json:/config.json \
 -v /var/run/docker.sock:/var/run/docker.sock containrrr/watchtower:1.6.0 --interval 10 dotnet-test --debug
 
 
