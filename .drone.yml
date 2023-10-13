@@ -9,6 +9,22 @@ platform:
 steps:
 - name: build-docker
   image: docker:dind
+  volumes:
+  - name: dockersock
+    path: /var/run
   commands:
   - docker build -t localhost:5000/dotnet-test:3.0.0 .
   - docker push localhost:5000/dotnet-test:3.0.0
+
+
+services:
+- name: docker
+  image: docker:dind
+  privileged: true
+  volumes:
+  - name: dockersock
+    path: /var/run
+
+volumes:
+- name: dockersock
+  temp: {}
