@@ -44,7 +44,7 @@ DRONE_RPC_HOST=localhost:9000
 DRONE_RPC_SECRET=b014154316bfe1de52559ad3dd306386
 DRONE_LOG_FILE=/var/log/drone-runner-exec/log.txt
 
-    
+
 5. Setup Docker Registry
 
 - On Linux:
@@ -90,4 +90,5 @@ docker run -d \
 
  docker run -d --name dotnet-test -p 8080:80 registry:5000/dotnet-test:latest
 
-7. create changes and push repository
+7. Add secret docker_pass on drone container with password of your docker user
+8. create changes and push repository
