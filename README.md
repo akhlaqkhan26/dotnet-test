@@ -88,7 +88,7 @@ docker run -d \
 
 6. Run service as container
 
- docker run -d --name dotnet-test -p 8080:80 registry:5000/dotnet-test:latest
+ docker run -d --name dotnet-test -v -v /c/Users/appsettings.json:/app/appsettings.json -p 8080:80 registry:5000/dotnet-test:latest
 
 7. Add secret docker_pass on drone container with password of your docker user
 8. create changes and push repository
