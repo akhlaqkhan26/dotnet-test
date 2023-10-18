@@ -31,11 +31,12 @@ namespace DotnetTest
             app.UseRouting();
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapGet("/", () => "Test "+Configuration.GetConnectionString("Test"));
+                endpoints.MapGet("/", () => "Coba "+Configuration.GetConnectionString("Test"));
                 endpoints.MapControllers();
             });
 
         }
     }
 }
+//test
 //test
