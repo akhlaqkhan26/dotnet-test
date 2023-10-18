@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "+YrcWm3syKWOOcPMGTQUy+J7e+kqc3JhfwRhltf7U00=",
+  "Source": "dotnet-test",
+  "BasePath": "_content/dotnet-test",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

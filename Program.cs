@@ -1,11 +1,19 @@
-var builder = WebApplication.CreateBuilder(args);
-var app = builder.Build();
+namespace DotnetTest
+{
+  public class Program
+{
+    public static void Main(string[] args)
+    {
+        var host = CreateHostBuilder(args).Build();
+        host.Run();
+    }
 
-app.MapGet("/", () => "Hello Akhlaq Khan!");
-
-app.Run();
-//test
-//test
-//test
-//test
-//test
+    public static IHostBuilder CreateHostBuilder(string[] args) =>
+        Host.CreateDefaultBuilder(args)
+            .ConfigureWebHostDefaults(webBuilder =>
+            {
+                webBuilder.ConfigureKestrel(o => o.Limits.MaxRequestBodySize = 159715200);
+                webBuilder.UseStartup<Startup>();
+            });
+}
+}
