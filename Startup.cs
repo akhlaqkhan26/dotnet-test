@@ -31,6 +31,7 @@ namespace DotnetTest
             app.UseRouting();
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapGet("/", () => "Test "+Configuration.GetConnectionString("Test"));
                 endpoints.MapControllers();
             });
 
