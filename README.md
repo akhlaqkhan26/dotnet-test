@@ -92,3 +92,58 @@ docker run -d \
 
 7. Add secret docker_pass on drone container with password of your docker user
 8. create changes and push repository
+
+
+
+
+
+
+IMPLEMENTAON PLAN
+Prerequisite
+- Drone need to access internet, so make sure there is no vpn or another thing that blocking internet access in Drone
+- For Internet Issue, I will change config SFTP Server MPM on Attachment using SFTP Local Server
+Setup Drone 
+- Preparation
+	- expose host public for drone server host
+- Create an OAuth Application in github as Administrator for repo mpm, (for testing, i will create my own OAuth Application and my own repo)
+- Make sure to get Client Id and Client Secret
+- For Documentation, i can follow in here https://docs.drone.io/server/provider/github/
+- Install Drone CI with Docker Container 
+- docker run \
+  --volume=/var/lib/drone:/data \
+  --env=DRONE_GITHUB_CLIENT_ID=your-id \
+  --env=DRONE_GITHUB_CLIENT_SECRET=super-duper-secret \
+  --env=DRONE_RPC_SECRET=super-duper-secret \
+  --env=DRONE_SERVER_HOST=drone.company.com \
+  --env=DRONE_SERVER_PROTO=https \
+  --publish=80:80 \
+  --publish=443:443 \
+  --restart=always \
+  --detach=true \
+  --name=drone \
+  drone/drone:2
+
+install Drone Exec Runner
+https://docs.drone.io/runner/exec/installation/windows/
+Make sure config for runner windows
+Config Runner if using exec runner:
+
+DRONE_RPC_PROTO=http
+DRONE_RPC_HOST=localhost:9000
+DRONE_RPC_SECRET=S3cr3t
+DRONE_LOG_FILE=/var/log/drone-runner-exec/log.txt
+
+Create Drone .yml in all repo (for testing, i will create in my own repo)
+Setup Docker Registry
+When Drone is triggered, Drone will run docker build and docker push the image to Docker Registry
+Setup Docker Local Registry
+documentation: https://docs.docker.com/registry/deploying/
+Setup WatchTower
+With watchtower you can update the running version of your containerized app simply by pushing a new image to the Docker Hub or your own image registry.
+https://github.com/containrrr/watchtower
+Run Docker Container From Local Registry
+By default, watchtower will monitor all containers running within the Docker daemon to which it is pointed. I want to make watchtower monitor only container from repo vendor
+After Image is ready on local registry i will run watchtower with argument to monitor specific repo
+make sure using tag latest for docker image because watchtower is only read latest tag
+
+
