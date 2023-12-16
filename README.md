@@ -97,7 +97,7 @@ docker run -d \
 
 
 
-
+```
 IMPLEMENTAON PLAN
 Prerequisite
 - Drone need to access internet, so make sure there is no vpn or another thing that blocking internet access in Drone
@@ -145,5 +145,4 @@ Run Docker Container From Local Registry
 By default, watchtower will monitor all containers running within the Docker daemon to which it is pointed. I want to make watchtower monitor only container from repo vendor
 After Image is ready on local registry i will run watchtower with argument to monitor specific repo
 make sure using tag latest for docker image because watchtower is only read latest tag
-
-
+```
