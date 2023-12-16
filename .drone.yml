@@ -12,5 +12,5 @@ steps:
     PASSWORD:
       from_secret: docker_pass
   commands:
-  - docker build -t registry:5000/dotnet-test .
-  - docker push registry:5000/dotnet-test
+  - docker build -t localhost:5000/dotnet-test .
+  - docker push localhost:5000/dotnet-test
